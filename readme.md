@@ -16,9 +16,9 @@ source myenv\bin\activate
 ![alt text](image.png)
 10. pip install pyodbc
 
-how to code in vs code using python for connectivity of database and python also for creating ,deleting,updating rows
+--> how to code in vs code using python for connectivity of database and python also for creating ,deleting,updating rows
 
-E
+
 
 To connect to a database using Python in Visual Studio Code (VS Code), create tables, insert rows, update rows, and delete rows, you can follow these steps:
 
@@ -27,77 +27,68 @@ Install the necessary extensions: In VS Code, install the Python extension and t
 Create a new Python file: Create a new Python file by clicking File > New File or by pressing Ctrl + N.
 Install the required packages: Install the necessary packages for connecting to the database. For example, if you're connecting to a SQL Server database, you can install pyodbc using pip:
 
-import pyodbc
+    ==>import pyodbc
+
 Create a connection string: Create a connection string for your database. For example, for a SQL Server database, the connection string might look like this:
 python
 
-conn_str = (
-    "DRIVER={ODBC Driver 17 for SQL Server};"
-    "SERVER=your_server_name;"
-    "DATABASE=your_database_name;"
-    "UID=your_username;"
-    "PWD=your_password;"
-)
+    ==>conn_str = (
+        "DRIVER={ODBC Driver 17 for SQL Server};"
+        "SERVER=your_server_name;"
+        "DATABASE=your_database_name;"
+        "UID=your_username;"
+        "PWD=your_password;"
+    )
+
 Replace your_server_name, your_database_name, your_username, and your_password with the appropriate values for your database.
 
 Create a connection: Create a connection to the database using the connection string:
 
-python
 
-conn = pyodbc.connect(conn_str)
+
+    ==> conn = pyodbc.connect(conn_str)
 Create a table: Create a table in the database using the connection:
 
-python
 
-cursor = conn.cursor()
-cursor.execute("""
-    CREATE TABLE your_table (
-        id INT PRIMARY KEY IDENTITY(1,1),
-        name NVARCHAR(50) NOT NULL,
-        age INT NOT NULL
-    )
-""")
-conn.commit()
+
+
+    ==>cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE your_table (
+            id INT PRIMARY KEY IDENTITY(1,1),
+            name NVARCHAR(50) NOT NULL,
+            age INT NOT NULL
+        )
+    """)
+    conn.commit()
 Replace your_table with the name of the table you want to create.
 
 Insert rows: Insert rows into the table using the connection:
-python
-Edit
-Run
-Full Screen
-Copy code
-cursor.execute("INSERT INTO your_table (name, age) VALUES (?, ?)", ("Alice", 30))
-cursor.execute("INSERT INTO your_table (name, age) VALUES (?, ?)", ("Bob", 25))
-conn.commit()
-Update rows: Update rows in the table using the connection:
-python
-Edit
-Run
-Full Screen
-Copy code
-cursor.execute("UPDATE your_table SET age = ? WHERE name = ?", (35, "Alice"))
-conn.commit()
-Delete rows: Delete rows from the table using the connection:
-python
-Edit
-Run
-Full Screen
-Copy code
-cursor.execute("DELETE FROM your_table WHERE name = ?", ("Bob",))
-conn.commit()
-Retrieve rows: Retrieve rows from the table using the connection:
-python
-Edit
-Run
-Full Screen
-Copy code
-cursor.execute("SELECT * FROM your_table")
-rows = cursor.fetchall()
 
-for row in rows:
-    print(row)
+    ==>cursor.execute("INSERT INTO your_table (name, age) VALUES (?, ?)", ("Alice", 30))
+    cursor.execute("INSERT INTO your_table (name, age) VALUES (?, ?)", ("Bob", 25))
+    conn.commit()
+    
+Update rows: Update rows in the table using the connection:
+
+    ==>cursor.execute("UPDATE your_table SET age = ? WHERE name = ?", (35, "Alice"))
+    conn.commit()
+    
+Delete rows: Delete rows from the table using the connection:
+
+    ==>cursor.execute("DELETE FROM your_table WHERE name = ?", ("Bob",))
+       conn.commit()
+       
+Retrieve rows: Retrieve rows from the table using the connection:
+
+    ==>cursor.execute("SELECT * FROM your_table")
+       rows = cursor.fetchall()
+       for row in rows:
+          print(row)
+
 Close the connection: Close the connection to the database when you're done:
 python
 
-conn.close()
+    ==> conn.close()
+    
 This is a basic example of how to connect to a database using Python in VS Code, create tables, insert rows, update rows, and delete rows. Depending on the database you're using, the connection string and the SQL commands may be different.
