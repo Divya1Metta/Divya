@@ -1,8 +1,8 @@
-Project setup
+# Project setup
 
 
-1.Start by creating a new folder for the project and open it in the VSCode
-2.Write a main.py file for testing it. Maybe print(”Hello World!”)
+1. Start by creating a new folder for the project and open it in the VSCode
+2. Write a main.py file for testing it. Maybe print(”Hello World!”)
 
 3.Now Open terminal. (Shortcut ctrl + shift + ```)
 4.Ensure it is in powershell. Or open it in powershell manually
